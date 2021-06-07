@@ -2,15 +2,9 @@ import axios from 'axios'
 import { useQuery } from 'react-query';
 
 export const api = axios.create({
-  baseURL: 'http://localhost:8081/',
+  baseURL: 'http://services/',
   timeout: 10000
 });
-
-const fetchPosts = async (limit: number = 10) => {
-  const parsed = await axios.get('https://jsonplaceholder.typicode.com/posts')
-  const result = parsed.data.filter((x: any) => x.id <= limit)
-  return result
-}
 
 async function searchConcepts(index: string, q: string) {
   let { data } = await api.get('concepts', {
@@ -44,9 +38,6 @@ async function indexConcept(concept: any) {
   return await api.post('index', rest, { params: { index } });
 }
 
-const usePosts = (limit: number) => {
-  return useQuery(['posts', limit], () => fetchPosts(limit))
-}
 
 
-export { usePosts, fetchPosts, searchConcepts, useSearch, indexConcept, searchConcept, useConcept }
+export { searchConcepts, useSearch, indexConcept, searchConcept, useConcept }
