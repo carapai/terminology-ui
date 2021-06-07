@@ -1,4 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Box } from "@chakra-ui/react";
 import { SSRCookies, SSRKeycloakProvider } from '@react-keycloak/ssr';
 import cookie from 'cookie';
 import type { IncomingMessage } from 'http';
@@ -34,7 +34,9 @@ function MyApp({ Component, pageProps, cookies }: AppProps & InitialProps) {
           >
             <Layout>
               <Header />
-              <Component {...pageProps} />
+              <Box p="10px">
+                <Component {...pageProps} />
+              </Box>
             </Layout>
           </SSRKeycloakProvider>
         </ChakraProvider>

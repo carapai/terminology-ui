@@ -1,8 +1,5 @@
+import { Box } from '@chakra-ui/react';
 import type { KeycloakTokenParsed } from 'keycloak-js';
-import { QueryClient } from 'react-query';
-import { dehydrate } from 'react-query/hydration';
-import { PostList } from '../components';
-import { fetchPosts } from '../hooks';
 
 type ParsedToken = KeycloakTokenParsed & {
   email?: string
@@ -14,16 +11,16 @@ type ParsedToken = KeycloakTokenParsed & {
 
 export default function Home() {
   return (
-    <PostList />
+    <Box>Home</Box>
   )
 }
 
-export async function getStaticProps() {
-  const queryClient = new QueryClient()
-  await queryClient.prefetchQuery(['posts', 10], () => fetchPosts(10))
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  }
-}
+// export async function getStaticProps() {
+//   const queryClient = new QueryClient()
+//   await queryClient.prefetchQuery(['posts', 10], () => fetchPosts(10))
+//   return {
+//     props: {
+//       dehydratedState: dehydrate(queryClient),
+//     },
+//   }
+// }
