@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useQuery } from 'react-query';
 
 export const api = axios.create({
-  baseURL: 'http://services/',
+  baseURL: 'https://services.fhir.hispuganda.org/',
   timeout: 10000
 });
 
