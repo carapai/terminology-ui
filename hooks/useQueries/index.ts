@@ -2,8 +2,7 @@ import axios from 'axios'
 import { useQuery } from 'react-query';
 
 export const api = axios.create({
-  baseURL: 'http://localhost:3001/fhir/',
-  timeout: 10000
+  baseURL: 'https://services.fhir.hispuganda.org/fhir/'
 });
 
 async function searchConcepts(index: string, q: string) {
