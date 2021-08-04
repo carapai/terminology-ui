@@ -79,7 +79,7 @@ const TerminologyDetails: FC<TerminologyProps> = ({ id, index }) => {
   return (
     <>
       {isLoading && <Box>Loading</Box>}
-      {isSuccess && <Box>
+      {isSuccess && !!data && <Box>
         <Text>Terminology Details</Text>
         <SimpleGrid columns={2} mt="20px">
           <HStack>
@@ -133,7 +133,7 @@ const TerminologyDetails: FC<TerminologyProps> = ({ id, index }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {data.mappings.map((mapping: any) => <Tr key={mapping.code}>
+            {data && data.mappings ? data.mappings.map((mapping: any) => <Tr key={mapping.code}>
               <Td>{mapping.system}</Td>
               <Td>
                 {mapping.code}
@@ -141,7 +141,11 @@ const TerminologyDetails: FC<TerminologyProps> = ({ id, index }) => {
               <Td>
                 <Button onClick={() => deleteMapping(mapping)}>Delete</Button>
               </Td>
-            </Tr>)}
+            </Tr>) : <Tr>
+              <Td>
+                <pre>{JSON.stringify(data, null, 2)}</pre>
+              </Td>
+            </Tr>}
           </Tbody>
         </Table>
         <Button
