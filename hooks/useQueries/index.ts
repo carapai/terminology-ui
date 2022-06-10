@@ -2,8 +2,8 @@ import axios from "axios";
 import { useQuery } from "react-query";
 
 export const api = axios.create({
-  // baseURL: 'https://services.fhir.hispuganda.org/fhir/'
-  baseURL: "http://localhost:3001/fhir/",
+  baseURL: 'https://services.fhir.hispuganda.org/fhir/'
+  // baseURL: "http://localhost:3001/fhir/",
 });
 
 async function searchConcepts(index: string, q: string) {
