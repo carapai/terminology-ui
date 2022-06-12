@@ -2,8 +2,8 @@ import axios from "axios";
 import { useQuery } from "react-query";
 
 export const api = axios.create({
-  baseURL: 'https://services.fhir.hispuganda.org/fhir/'
-  // baseURL: "http://localhost:3001/fhir/",
+  // baseURL: 'https://services.fhir.hispuganda.org/fhir/'
+  baseURL: "http://localhost:3001/fhir/",
 });
 
 async function searchConcepts(index: string, q: string) {
@@ -37,4 +37,16 @@ async function indexConcept(concept: any) {
   return await api.post("index", rest, { params: { index } });
 }
 
-export { searchConcepts, useSearch, indexConcept, searchConcept, useConcept };
+async function deleteDoc(concept: any) {
+  const { index, id } = concept;
+  return await api.get("delete", { params: { index, id } });
+}
+
+export {
+  searchConcepts,
+  useSearch,
+  indexConcept,
+  searchConcept,
+  useConcept,
+  deleteDoc,
+};
