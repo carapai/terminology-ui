@@ -51,17 +51,17 @@ export const SearchResults: FC<SearchProps> = ({ q, index }) => {
               </Thead>
               <Tbody>
                 {data.map((dt: any) => (
-                  <Tr key={dt._id}>
-                    <Td>{dt._id}</Td>
-                    <Td>{dt._source.name}</Td>
+                  <Tr key={dt.id}>
+                    <Td>{dt.id}</Td>
+                    <Td>{dt.name}</Td>
                     <Td>
-                      <Link href={`/${index}/${dt._id}`} as={NextLink}>
+                      <Link href={`/${index}/${dt.id}`} as={NextLink}>
                         <a>Details</a>
                       </Link>
                     </Td>
                     <Td>
                       <Button
-                        onClick={() => deleteRecord(dt._id)}
+                        onClick={() => deleteRecord(dt.id)}
                         isLoading={deleting}
                       >
                         Delete

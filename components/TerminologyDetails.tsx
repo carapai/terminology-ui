@@ -137,6 +137,7 @@ const TerminologyDetails: FC<TerminologyProps> = ({ id, index }) => {
                   <Radio value="extension">Extension</Radio>
                   <Radio value="telecom">Telecom</Radio>
                   <Radio value="maritalStatus">Marital Status</Radio>
+                  <Radio value="obs">Marital Status</Radio>
                 </Stack>
               </RadioGroup>
             </Box>
